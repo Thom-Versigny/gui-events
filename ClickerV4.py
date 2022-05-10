@@ -17,16 +17,20 @@ def deelendrie(event):
     nummer = nummer/3
     labelmiddle.config(text=nummer)
 
-def up():
+def up(event):
     global nummer
     nummer = nummer + 1
     labelmiddle.config(text=nummer)
+    achtergrond(1)
     labelmiddle.bind('<Double-Button-1>', keerdrie)
-def down():
+    window.bind('<space>', keerdrie)
+def down(event):
     global nummer
     nummer = nummer - 1
     labelmiddle.config(text=nummer)
+    achtergrond(1)
     labelmiddle.bind('<Double-Button-1>', deelendrie)
+    window.bind('<space>', deelendrie)
 
 def achtergrond(event):
     if nummer <= -1:
@@ -40,9 +44,9 @@ def hover(event):
     window.configure(bg='yellow')
 
 
-buttonup = tkinter.Button(window, text='up', command=lambda: [up(), achtergrond(1)])
+buttonup = tkinter.Button(window, text='up', command=lambda: [up(1)])
 labelmiddle = tkinter.Label(window, text='0',)
-buttondown = tkinter.Button(window, text='down', command=lambda: [down(), achtergrond(1)])
+buttondown = tkinter.Button(window, text='down', command=lambda: [down(1)])
 
 buttonup.pack(ipadx=5,ipady=5,expand=True)
 labelmiddle.pack(ipadx=5, ipady=5, expand=True)
@@ -50,5 +54,11 @@ buttondown.pack(ipadx=5, ipady=5, expand=True)
 
 labelmiddle.bind('<Enter>', hover)
 labelmiddle.bind('<Leave>', achtergrond)
+window.bind('<Up>', up)
+window.bind('+', up)
+window.bind('<Down>', down)
+window.bind('-', down)
+window.bind('<space>', down)
+
 
 window.mainloop()
