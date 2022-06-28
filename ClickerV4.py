@@ -4,7 +4,7 @@ nummer = 0
 
 window.geometry('200x200')
 window.configure(bg='grey')
-window.title('grabbel ton')
+window.title('clicker')
 
 def keerdrie(event):
     global nummer
@@ -58,7 +58,6 @@ window.bind('<Up>', up)
 window.bind('+', up)
 window.bind('<Down>', down)
 window.bind('-', down)
-window.bind('<space>', down)
 
 
 window.mainloop()
